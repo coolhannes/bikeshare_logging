@@ -42,3 +42,5 @@ def fetch_and_store_data():
 
     # Close the database connection
     conn.close()
+
+fetch_and_store_data()
