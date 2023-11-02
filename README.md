@@ -11,7 +11,7 @@ Currently this runs as a chron job on render, hooked up to a postgres database. 
 [Render](https://render.com) offers a cheap tier of chron jobs that run at your whim and can use python. They also offer a free tier of postgres available for 90 days -- I recommend paying for a bit more, but it's a great way to get started.
 
 ### Chron Job
-When setting up the chron job, you can use the variable names in the python script to label your Environment Variables in the render web UI.
+When setting up the chron job, you can use the variable name in the python script to label your Environment Variable in the render web UI. In this case, make sure the connection external URL starts with "postgresql" instead of "postgres".
 
 I recommend setting the python version to 3.10.0: https://render.com/docs/python-version.
 
