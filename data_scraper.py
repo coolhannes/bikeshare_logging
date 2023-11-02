@@ -1,7 +1,8 @@
-import time
-import requests
+import os
 import pandas as pd
 import psycopg2
+import requests
+import time
 
 # Function to fetch data and store in Postgres
 def fetch_and_store_data():
@@ -27,11 +28,11 @@ def fetch_and_store_data():
 
     # Establish connection to the Postgres database
     conn = psycopg2.connect(
-        dbname="your_db_name",
-        user="your_username",
-        password="your_password",
-        host="your_host",
-        port="your_port"
+        dbname=os.getenv("db_name"),
+        user=os.getenv("db_user"),
+        password=os.getenv("db_pass"),
+        host=os.getenv("db_host"),
+        port=os.getenv("db_port")
     )
 
     # Store data in Postgres
