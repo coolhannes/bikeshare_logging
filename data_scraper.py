@@ -22,8 +22,10 @@ def fetch_and_store_data():
     data_urls = {
         "station_status": "https://gbfs.lyft.com/gbfs/2.3/dca-cabi/en/station_status.json",
         "station_info": "https://gbfs.lyft.com/gbfs/2.3/dca-cabi/en/station_information.json",
-        "bike_status": "https://gbfs.lyft.com/gbfs/2.3/dca-cabi/en/free_bike_status.json"
     }
+    
+    # This is a big table, skipping for now.
+    # "bike_status": "https://gbfs.lyft.com/gbfs/2.3/dca-cabi/en/free_bike_status.json"
 
     for table_name, url in data_urls.items():
         response = requests.get(url)
