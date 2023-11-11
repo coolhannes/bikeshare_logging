@@ -90,13 +90,11 @@ def fetch_and_store_data():
             );
         """
 
-        conn = engine.connect()
-        
-        # Run the merge
-        conn.execute(text(merge_sql))
-
-        # Drop the temporary table
-        conn.execute(text(f"DROP TABLE IF EXISTS {temp_table_name}"))
+        with engine.begin() as conn:
+            # Run the merge
+            conn.execute(text(merge_sql))
+            # Drop the temporary table
+            conn.execute(text(f"DROP TABLE IF EXISTS {temp_table_name}"))
 
     # Close the database connection
     engine.dispose()
