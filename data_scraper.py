@@ -1,7 +1,7 @@
 import os
 import pandas as pd
 import requests
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from datetime import datetime
 
 # Function to convert non-numeric columns to strings
@@ -92,9 +92,10 @@ def fetch_and_store_data():
         conn = engine.connect()
         
         # Run the merge
-        conn.execute(merge_sql)
+        conn.execute(text(merge_sql))
+
         # Drop the temporary table
-        conn.execute(f"DROP TABLE IF EXISTS {temp_table_name}")
+        conn.execute(text(f"DROP TABLE IF EXISTS {temp_table_name}"))
 
     # Close the database connection
     engine.dispose()
