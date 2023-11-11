@@ -1,5 +1,8 @@
+DROP TABLE station_status;
+DROP TABLE station_info;
+
 CREATE TABLE station_status (
-    station_id VARCHAR(150) PRIMARY KEY,
+    station_id VARCHAR(150),
     is_renting BOOLEAN,
     is_returning BOOLEAN,
     is_installed BOOLEAN,
@@ -13,7 +16,7 @@ CREATE TABLE station_status (
 );
 
 CREATE TABLE station_info (
-    station_id VARCHAR(150) PRIMARY KEY,
+    station_id VARCHAR(150),
     name VARCHAR,
     lat DOUBLE PRECISION,
     lon DOUBLE PRECISION,
