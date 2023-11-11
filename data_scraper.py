@@ -88,10 +88,13 @@ def fetch_and_store_data():
                 {', '.join(cols)}
             );
         """
-        engine.execute(merge_sql)
 
+        conn = engine.connect()
+        
+        # Run the merge
+        conn.execute(merge_sql)
         # Drop the temporary table
-        engine.execute(f"DROP TABLE IF EXISTS {temp_table_name}")
+        conn.execute(f"DROP TABLE IF EXISTS {temp_table_name}")
 
     # Close the database connection
     engine.dispose()
