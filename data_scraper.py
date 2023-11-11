@@ -47,6 +47,7 @@ def fetch_and_store_data():
                 'num_ebikes_available',
                 'num_docks_available',
                 'last_reported',
+                'data_retrieved_ts'
             ]
         else:
             cols = [
@@ -55,14 +56,14 @@ def fetch_and_store_data():
                 'lat',
                 'lon',
                 'capacity',
+                'data_retrieved_ts'
             ]
 
-        # Extract relevant columns
-        df = pd.DataFrame(data['data']['stations'])[cols]
-
-        # Add a column for the current timestamp
+        # Extract relevant columns and add a column for the current timestamp
+        df = pd.DataFrame(data['data']['stations'])
         df = convert_non_numeric_to_string(df)
         df['data_retrieved_ts'] = pd.to_datetime(data_retrieved_utc, utc=True)
+        df = df[cols]
 
         # Convert columns that are binary to boolean
         df = convert_binary_to_boolean(df, ['is_renting', 'is_returning', 'is_installed'])
