@@ -80,8 +80,7 @@ def fetch_and_store_data():
             MERGE INTO {table_name} AS prod
             USING {temp_table_name} AS temp
             ON prod.station_id = temp.station_id
-            AND {' AND '.join(f"prod.{col} = temp.{col}" for col in cols if col != 'station_id')}
-
+            AND {' AND '.join(f"prod.{col} = temp.{col}" for col in cols if col not in ['station_id', 'data_retrieved_ts'])}
             WHEN MATCHED THEN UPDATE SET
                 data_retrieved_ts = temp.data_retrieved_ts
             
